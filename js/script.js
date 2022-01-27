@@ -1,42 +1,23 @@
 "use strict";
 
-let num = 20;
+const str = "test";
 
-function showFirstMessage(text) {
-    console.log(text);
-    num = 10;
-}
+console.log(str.toUpperCase());
+console.log(str);
 
-showFirstMessage('Hello');
-console.log(num);
+const fruit = "Some fruit";
 
-function calc(a, b) {
-    return (a + b);
-}
+console.log(fruit.indexOf("fruit"));
 
-console.log(calc(4, 3));
-console.log(calc(43, 31));
-console.log(calc(456, 3));
-console.log(calc(43, 371));
+const logg = "Hello world";
 
+// console.log(logg.slice(6, 11));
 
-function ret() {
-    let num = 40;
-    return num;
-}
+console.log(logg.substr(6, 2));
+// Округление чисел
+const num = 12.2;
+console.log(Math.round(num));
 
-const anotherNum = ret();
-console.log(anotherNum);
-//Функция в переменной используется только после того как была объявленной в отличии от предыдущей
-const logger = function() {
-    console.log('Hrllo');
-};
-
-logger();
-
-//Стрелочная функция
-
-const chak = (a, b) => {
-    console.log('1');
-    return a + b;
-};
+const test = "12.2px";
+// console.log(parseInt(test));
+console.log(parseFloat(test));
