@@ -1,40 +1,26 @@
 "use strict";
 
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function() {    //Мметод объекта
-        console.log('Test');
-    }
-};
+const arr = [1, 2, 3, 6, 8];
 
-options.makeTest();
+// arr.forEach(function(item, i, arr) {
+//     console.log(`${i}: ${item} внутри массива ${arr}`);
+// });
 
-const {border, bg} = options.colors; // Деструктуризация объектов
+// // console.log(arr.length); // Кол-во элементов массива
 
-console.log(border, bg);
+// //arr.pop(); //удаляет последний элемент массива
+// arr.push(10); //добавляет элемент в конец массива
 
-console.log(Object.keys(options).length); //ПОказывает колличество объектов в цифрах
-// console.log(options.name);
+// console.log(arr);
 
-// delete options.name;
-
-// console.log(options);
-// let counter = 0;
-// for (let key in options) {
-//     if (typeof(options[key]) === 'object') {
-//         for (let i in options[key]) {
-//             console.log(`Свойство ${i} имеет значение ${options[key][i]}`);                 
-//             counter++;
-//         }
-//     } else {
-//         console.log(`Свойство ${key} имеет значение ${options[key]}`);
-//         counter++;
-//     }  
+// for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
 // }
-// console.log(counter);
+
+// for (let value of arr) {       //еще один вариант
+//     console.log(value);
+// }
+
+const str = prompt("", "");
+const products = str.split(", ");
+console.log(products.join('; '));
