@@ -1,80 +1,67 @@
 "use strict";
 
-// const obj = {
-//     a: 5,
-//     b: 1
-// };
-
-// const copy = obj; // Передаёт не саму структуру а ссылку на объект
-
-// copy.a = 10;
-
-// console.log(copy);
-
-function copy(mainObj) {
-    let objCopy = {};
+const personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    generes: [],  //Массив
+    private: false,
+    start: function() {
+        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
     
-    let key;
-    for (key in mainObj) {
-        objCopy[key] = mainObj[key];
-    }
-
-    return objCopy;
-}
-
-const numbers = {
-    a: 2,
-    b: 3,
-    c: {
-        x: 5,
-        y: 7
-    }
-};
-
-const newNumbers = copy(numbers);
-
-newNumbers.a = 10;
-
-console.log(newNumbers);
-
-const add = {
-    d: 17,
-    e: 20
-};
-
-// console.log(Object.assign(numbers, add));  // соединяет объекты
-
-const oldArray = ['a', 'b', 'c'];
-const newArray = oldArray.slice();   //копируем массив
-
-newArray[1] = 'sfdghjryhj';
-console.log(newArray);
-console.log(oldArray);
-
-const video = ['youtube', 'vimeo', 'rutube'],        //еще 1 способ
-      blogs = ['wordpress', 'livejournal', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
-
-console.log(internet);      
-
-
-function log(a, b, c) {  //еще 1 способ
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
-
-const num = [2, 5, 7];
-
-log(...num);
-
-const array = ['a', 'b'];
-const newAAray = [...array];  //Так тоже копирует
-
-
-const q = {
-    one: 1,           //И так тоже можно
-    two: 2
-};
-
-const newQ = {...q};
+        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        }
+    },
+    rememberMyFilms: function() {
+        for (let i = 0; i < 2; i++) {
+            const a = prompt('Один из последних фильмов', ''),
+                  b = prompt('На сколько оцените его?', '');
+    
+            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+                console.log('done');
+            } else {
+                console.log('error');
+                i--;
+            }     
+        }
+    },
+    detectPersonalLevel: function() {
+        if (personalMovieDB.count < 10) {
+            console.log('Просмотренно мало фильмов');
+        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+            console.log('Вы класический киноман');
+        } else if (personalMovieDB.count >= 30) {
+            console.log('Вы киноман');
+        } else {
+            console.log('ПРоизошла ошибка');
+        }
+    },  
+    showMyDB: function(hidden) {
+        if (!hidden) {
+            console.log(personalMovieDB);
+        }
+    },
+    whiteYouGeners: function() {
+        for (let i = 1; i <= 3; i++) {
+            const genre = prompt(`Ваш любимый жанр под номером ${i}`);
+            if (genre != null && genre != '') {
+                personalMovieDB.generes[i - 1] = genre;
+            } else {
+                console.log('Вы ввели некорректные даныне');
+                i--;
+            }
+        }
+        personalMovieDB.generes.forEach((item, i) => {
+            console.log(`Любимый жанр ${i+1} - это ${item}`);
+        });
+    },
+    toggleeVisibleMyDB: function() {
+        if (personalMovieDB.private) {
+            personalMovieDB.private = true;
+        } else {
+            personalMovieDB.private = false;
+        }
+    },
+};    
